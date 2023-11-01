@@ -18,6 +18,7 @@ const GPTSearchBar = () => {
         "&include_adult=false&language=en-US&page=1",
       API_OPTIONS
     );
+
     const json = await data.json();
 
     return json.results;
@@ -43,10 +44,7 @@ const GPTSearchBar = () => {
 
     console.log(gptResults.choices?.[0]?.message?.content);
 
-    // Andaz Apna Apna, Hera Pheri, Chupke Chupke, Jaane Bhi Do Yaaro, Padosan
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(",");
-
-    // ["Andaz Apna Apna", "Hera Pheri", "Chupke Chupke", "Jaane Bhi Do Yaaro", "Padosan"]
 
     // For each movie I will search TMDB API
 
@@ -63,9 +61,9 @@ const GPTSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
+    <div className="pt-[35%] md:pt-[10%] flex justify-center">
       <form
-        className=" w-1/2 bg-black grid grid-cols-12"
+        className="w-full md:w-1/2 bg-black grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
