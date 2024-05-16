@@ -1,16 +1,18 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/firebase";
-import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
-import { toggleGPTSearchView } from "../utils/gptSlice";
-import { changeLanguage } from "../utils/configSlice";
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../utils/firebase';
+import { addUser, removeUser } from '../utils/userSlice';
+import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
+import { toggleGPTSearchView } from '../utils/gptSlice';
+import { changeLanguage } from '../utils/configSlice';
+import { Link, useResolvedPath } from 'react-router-dom/dist';
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { pathname } = useResolvedPath();
   const user = useSelector((store) => store.user);
   const showGPTSearch = useSelector((store) => store.gpt.showGPTSearch);
 
@@ -18,7 +20,7 @@ const Header = () => {
     signOut(auth)
       .then(() => {})
       .catch((error) => {
-        navigate("/error");
+        navigate('/error');
       });
   };
 
@@ -43,10 +45,12 @@ const Header = () => {
             photoURL: photoURL,
           })
         );
-        navigate("/browse");
+        if (pathname === '/') {
+          navigate('/browse');
+        }
       } else {
         dispatch(removeUser());
-        navigate("/");
+        navigate('/');
       }
     });
 
@@ -56,7 +60,16 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
-      <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
+      <div className="flex md:flex-row w-1/3 justify-between">
+        <Link to={'/'}>
+          <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
+        </Link>
+        <div className="flex text-white gap-16 my-auto text-xl">
+          <Link to={'/browse?filter=all'}>Home</Link>
+          <Link to={'/browse?filter=movies'}>Movies</Link>
+          <Link to={'/browse?filter=tvSeries'}>TV Shows</Link>
+        </div>
+      </div>
       {user && (
         <div className="flex p-2 justify-between">
           {showGPTSearch && (
@@ -75,7 +88,7 @@ const Header = () => {
             className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearchClick}
           >
-            {showGPTSearch ? "Homepage" : "GPT Search"}
+            {showGPTSearch ? 'Homepage' : 'GPT Search'}
           </button>
           <img
             className="hidden md:block w-12 h-12"
