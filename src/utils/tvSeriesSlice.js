@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const tvSeriesSlice = createSlice({
   name: 'tvSeries',
@@ -29,6 +30,14 @@ const tvSeriesSlice = createSlice({
     addTVSeriesGenres: (state, action) => {
       state.tvSeriesGenres = action.payload;
     },
+    clearState: (state) => {
+      state.onTheAirTVSeries = null;
+      state.popularTVSeries = null;
+      state.topRatedTVSeries = null;
+      state.airingTodayTVSeries = null;
+      state.trailerVideo = null;
+      state.tvSeriesGenres = null;
+    },
   },
 });
 
@@ -39,6 +48,7 @@ export const {
   addTopRatedTVSeries,
   addAiringTodayTVSeries,
   addTVSeriesGenres,
+  clearState,
 } = tvSeriesSlice.actions;
 
 export default tvSeriesSlice.reducer;

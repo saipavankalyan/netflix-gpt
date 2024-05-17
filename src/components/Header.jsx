@@ -3,11 +3,23 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../utils/firebase';
-import { addUser, removeUser } from '../utils/userSlice';
+import {
+  addUser,
+  clearState as clearUserState,
+  removeUser,
+} from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
-import { toggleGPTSearchView } from '../utils/gptSlice';
-import { changeLanguage } from '../utils/configSlice';
+import {
+  toggleGPTSearchView,
+  clearState as clearGptState,
+} from '../utils/gptSlice';
+import {
+  changeLanguage,
+  clearState as clearConfigState,
+} from '../utils/configSlice';
 import { Link, useResolvedPath } from 'react-router-dom/dist';
+import { clearState as clearMovieState } from '../utils/moviesSlice';
+import { clearState as clearTVSeriesState } from '../utils/tvSeriesSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -22,6 +34,11 @@ const Header = () => {
       .catch((error) => {
         navigate('/error');
       });
+    dispatch(clearUserState());
+    dispatch(clearConfigState());
+    dispatch(clearGptState());
+    dispatch(clearMovieState());
+    dispatch(clearTVSeriesState());
   };
 
   const handleGptSearchClick = () => {
@@ -88,15 +105,18 @@ const Header = () => {
             className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearchClick}
           >
-            {showGPTSearch ? 'Homepage' : 'GPT Search'}
+            {showGPTSearch ? 'Homepage' : '🔎 GPT Search'}
           </button>
-          <img
+          {/* <img
             className="hidden md:block w-12 h-12"
             alt="usericon"
             src={user?.photoURL}
-          />
-          <button onClick={handleSignOut} className="font-bold text-white ">
-            (Sign Out)
+          /> */}
+          <button
+            onClick={handleSignOut}
+            className="py-2 px-4 mx-4 my-2 bg-red-700 text-white rounded-lg"
+          >
+            Sign Out
           </button>
         </div>
       )}

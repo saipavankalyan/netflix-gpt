@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const gptSlice = createSlice({
-  name: "gpt",
+  name: 'gpt',
   initialState: {
     showGPTSearch: false,
     movieNames: null,
@@ -16,9 +17,15 @@ const gptSlice = createSlice({
       state.movieNames = movieNames;
       state.movieResults = movieResults;
     },
+    clearState: (state) => {
+      state.showGPTSearch = false;
+      state.movieNames = null;
+      state.movieResults = null;
+    },
   },
 });
 
-export const { toggleGPTSearchView, addGPTMovieResult } = gptSlice.actions;
+export const { toggleGPTSearchView, addGPTMovieResult, clearState } =
+  gptSlice.actions;
 
 export default gptSlice.reducer;
