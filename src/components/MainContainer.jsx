@@ -18,8 +18,6 @@ const MainContainer = () => {
 
   const type = params.get('filter') || 'movies';
 
-  console.log(type);
-
   const { title, overview, id } = mainMovie;
 
   return (

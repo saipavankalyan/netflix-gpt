@@ -46,6 +46,10 @@ const Header = () => {
     dispatch(toggleGPTSearchView());
   };
 
+  const handleGptStateClear = () => {
+    dispatch(clearGptState());
+  };
+
   const handleLanguageChange = (e) => {
     dispatch(changeLanguage(e.target.value));
   };
@@ -78,13 +82,19 @@ const Header = () => {
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between text-sm md:text-lg">
       <div className="flex flex-col md:flex-row w-1/3 justify-around">
-        <Link to={'/'}>
+        <Link onClick={handleGptStateClear} to={'/'}>
           <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
         </Link>
         <div className="flex text-white gap-24 md:gap-16 my-auto">
-          <Link to={'/browse?filter=all'}>Home</Link>
-          <Link to={'/browse?filter=movies'}>Movies</Link>
-          <Link to={'/browse?filter=tvSeries'}>TV Shows</Link>
+          <Link onClick={handleGptStateClear} to={'/browse?filter=all'}>
+            Home
+          </Link>
+          <Link onClick={handleGptStateClear} to={'/browse?filter=movies'}>
+            Movies
+          </Link>
+          <Link onClick={handleGptStateClear} to={'/browse?filter=tvSeries'}>
+            TV Shows
+          </Link>
         </div>
       </div>
       {user && (

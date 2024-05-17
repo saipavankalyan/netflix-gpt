@@ -10,8 +10,6 @@ const ShowTrailer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const videoType = searchParams.get('filter') || 'movies';
 
-  console.log(movieId, videoType);
-
   return (
     <>
       <Header />

@@ -6,12 +6,15 @@ const VideoBackground = ({ movieId, videoType, muted = true }) => {
   const tvSeriesTrailerVideo = useSelector(
     (store) => store.tvSeries?.trailerVideo
   );
+
+  if (videoType === 'all') {
+    videoType = 'movies';
+  }
+
   useVideoTrailer(movieId, videoType);
 
   const trailerVideo =
     videoType === 'movies' ? movieTrailerVideo : tvSeriesTrailerVideo;
-
-  console.log(trailerVideo);
 
   return (
     <div className=" w-screen h-screen">

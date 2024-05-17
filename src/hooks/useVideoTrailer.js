@@ -13,8 +13,6 @@ const useVideoTrailer = (videoId, videoType) => {
       : store.tvSeries.trailerVideo
   );
 
-  console.log(videoId, videoType);
-
   const url =
     videoType === 'movies'
       ? `https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`
@@ -27,7 +25,6 @@ const useVideoTrailer = (videoId, videoType) => {
     const filterData = json.results.filter((video) => video.type === 'Trailer');
     const trailer = filterData.length ? filterData[0] : json.results[0];
 
-    console.log(trailer);
     if (videoType === 'movies') {
       dispatch(addMovieTrailerVideo(trailer));
     } else {
