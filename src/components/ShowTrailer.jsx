@@ -3,14 +3,19 @@ import { useParams } from 'react-router-dom';
 
 import VideoBackground from './VideoBackground';
 import Header from './Header';
+import { useSearchParams } from 'react-router-dom/dist';
 
 const ShowTrailer = () => {
-  const { movieId } = useParams();
+  const { id: movieId } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const videoType = searchParams.get('filter') || 'movies';
+
+  console.log(movieId, videoType);
 
   return (
     <>
       <Header />
-      <VideoBackground movieId={movieId} muted={false} />
+      <VideoBackground videoType={videoType} movieId={movieId} muted={false} />
     </>
   );
 };

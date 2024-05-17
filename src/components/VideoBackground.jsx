@@ -1,10 +1,17 @@
 import { useSelector } from 'react-redux';
-import useMovieTrailer from '../hooks/useMovieTrailer';
+import useVideoTrailer from '../hooks/useVideoTrailer';
 
-const VideoBackground = ({ movieId, muted = true }) => {
-  const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
+const VideoBackground = ({ movieId, videoType, muted = true }) => {
+  const movieTrailerVideo = useSelector((store) => store.movies?.trailerVideo);
+  const tvSeriesTrailerVideo = useSelector(
+    (store) => store.tvSeries?.trailerVideo
+  );
+  useVideoTrailer(movieId, videoType);
 
-  useMovieTrailer(movieId);
+  const trailerVideo =
+    videoType === 'movies' ? movieTrailerVideo : tvSeriesTrailerVideo;
+
+  console.log(trailerVideo);
 
   return (
     <div className=" w-screen h-screen">

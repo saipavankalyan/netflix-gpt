@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { clear } from '@testing-library/user-event/dist/clear';
 
 const configSlice = createSlice({
   name: 'config',

@@ -14,15 +14,22 @@ const SecondaryContainer = ({ filter = 'all' }) => {
               <MovieList
                 title={'Now Playing Movies'}
                 movies={movies.nowPlayingMovies}
+                videoType={'movies'}
               />
-              <MovieList title={'Popular'} movies={movies.popularMovies} />
+              <MovieList
+                title={'Popular Movies'}
+                movies={movies.popularMovies}
+                videoType={'movies'}
+              />
               <MovieList
                 title={'Top Rated Movies'}
                 movies={movies.topRatedMovies}
+                videoType={'movies'}
               />
               <MovieList
                 title={'Upcoming Movies'}
                 movies={movies.upcomingMovies}
+                videoType={'movies'}
               />
             </>
           )}
@@ -31,14 +38,17 @@ const SecondaryContainer = ({ filter = 'all' }) => {
               <MovieList
                 title={'Popular TV Series'}
                 movies={tvSeries.popularTVSeries}
+                videoType={'tvSeries'}
               />
               <MovieList
                 title={'Top Rated TV Series'}
                 movies={tvSeries.topRatedTVSeries}
+                videoType={'tvSeries'}
               />
               <MovieList
                 title={'Airing Today TV Series'}
                 movies={tvSeries.airingTodayTVSeries}
+                videoType={'tvSeries'}
               />
             </>
           )}

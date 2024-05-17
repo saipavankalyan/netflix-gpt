@@ -82,7 +82,7 @@ const Header = () => {
           <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
         </Link>
         <div className="flex text-white gap-24 md:gap-16 my-auto">
-          <Link to={'/browse'}>Home</Link>
+          <Link to={'/browse?filter=all'}>Home</Link>
           <Link to={'/browse?filter=movies'}>Movies</Link>
           <Link to={'/browse?filter=tvSeries'}>TV Shows</Link>
         </div>

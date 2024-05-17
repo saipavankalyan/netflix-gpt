@@ -15,8 +15,11 @@ const MovieDetailsCard = ({
   const genres = [...movieGenres, ...tvGenres];
 
   return (
-    <motion.div whileHover={{ scale: 1.2 }}>
-      <div className="w-56 h-84 m-4 p-8 scale-150 z-10 text-[0.5rem]">
+    <motion.div
+      whileHover={{ scale: 1.2, transition: { delay: 1 } }}
+      transition={{ type: 'tween' }}
+    >
+      <div className="w-56 h-84 m-12 p-8 z-10 scale-150 text-[0.5rem]">
         <div>
           <img
             className="bg-cover"
