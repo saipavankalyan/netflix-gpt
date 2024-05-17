@@ -7,7 +7,6 @@ const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   const tvSeries = useSelector((store) => store.tvSeries?.popularTVSeries);
 
-  console.log(movies, tvSeries);
   const [params, setParams] = useSearchParams();
 
   if (!movies) return;

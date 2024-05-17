@@ -33,13 +33,13 @@ const GPTSearch = () => {
           <GptSearchBar onSearchAttempted={handleSearchAttempt} />
         )}
         {/*  */}
-        <div className="bg-black opacity-80 w-2/3 mx-auto p-5 text-white font-bold text-center text-xl flex flex-col align-middle relative top-36">
+        <div className="bg-black opacity-80 w-2/3 mx-auto my-12 md:my-8 p-5 text-white md:font-bold text-center sm:text-sm md:text-xl flex flex-col align-middle relative top-36">
           <p className="">
             {attemptsRemaining > 0
               ? `Attempts remaining: ${attemptsRemaining}`
               : `You have exhausted all attempts`}
           </p>
-          <p className="text-white font-bold text-center mt-5 text-xl">
+          <p className="mt-5">
             Note: Since, this search uses paid OpenAI API, we are restricting
             the attempts to a maximum of 5 searches for each user.
           </p>

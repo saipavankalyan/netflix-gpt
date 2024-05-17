@@ -41,8 +41,6 @@ const GPTSearchBar = ({ onSearchAttempted }) => {
       // TODO: Write Error Handling
     }
 
-    console.log(gptResults.choices?.[0]?.message?.content);
-
     const gptMovies = gptResults.choices?.[0]?.message?.content.split(',');
 
     // For each movie I will search TMDB API
@@ -52,8 +50,6 @@ const GPTSearchBar = ({ onSearchAttempted }) => {
 
     const tmdbResults = await Promise.all(promiseArray);
 
-    console.log(tmdbResults);
-
     dispatch(
       addGPTMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
     );
@@ -62,19 +58,19 @@ const GPTSearchBar = ({ onSearchAttempted }) => {
   };
 
   return (
-    <div className="pt-[35%] md:pt-[10%] flex justify-center">
+    <div className="relative top-44 md:top-24 md:left-1/4 mx-2 md:pt-12 flex justify-between">
       <form
-        className="w-full md:w-1/2 bg-black grid grid-cols-12"
+        className="w-full  md:w-1/2 bg-black flex"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
-          className=" p-4 m-4 col-span-9"
+          className="w-[80%] mx-2 px-2 md:p-4 my-4 md:mx-4 text-sm md:text-xl"
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
-          className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
+          className="w-[20%] m-4 py-2 md:px-4 bg-red-700 text-white rounded-lg text-sm"
           onClick={handleGPTSearchClick}
         >
           {lang[langKey].search}

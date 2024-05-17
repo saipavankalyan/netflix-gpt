@@ -76,13 +76,13 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
-      <div className="flex md:flex-row w-1/3 justify-between">
+    <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between text-sm md:text-lg">
+      <div className="flex flex-col md:flex-row w-1/3 justify-around">
         <Link to={'/'}>
           <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
         </Link>
-        <div className="flex text-white gap-16 my-auto text-xl">
-          <Link to={'/browse?filter=all'}>Home</Link>
+        <div className="flex text-white gap-24 md:gap-16 my-auto">
+          <Link to={'/browse'}>Home</Link>
           <Link to={'/browse?filter=movies'}>Movies</Link>
           <Link to={'/browse?filter=tvSeries'}>TV Shows</Link>
         </div>

@@ -7,7 +7,6 @@ const MovieList = ({ title, movies }) => {
       <h1 className="text-lg md:text-3xl py-4 text-white">{title}</h1>
       <div className="flex overflow-x-scroll">
         <div className="flex">
-          {/* {console.log(movies)} */}
           {movies?.map((movie) => (
             <Link to={`/movie/${movie.id}`} key={movie.id}>
               <MovieCard key={movie.id} movie={movie} />
