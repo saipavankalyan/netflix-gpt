@@ -67,7 +67,7 @@ const Header = () => {
           })
         );
         if (pathname === '/') {
-          navigate('/browse');
+          navigate('/browse?filter=all');
         }
       } else {
         dispatch(removeUser());
