@@ -24,3 +24,5 @@ To run the application:
 - Run `npm start` to start the development server
 
 Video Walkthrough:
+
+https://github.com/saipavankalyan/netflix-gpt/assets/30022830/1e713144-207b-41f3-af7e-590d33541d0b
